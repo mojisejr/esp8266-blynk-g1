@@ -38,12 +38,12 @@ float VPD;
 float temp_diff;
 int vpd_mode;
 
-char auth[] = "e0f0561e20154a66ad477ae29720edc0";
+char auth[] = "";
 
 //TMD API
 const char* host = "data.tmd.go.th";
-const char* uid = "u61nonthasak.l";
-const char* token1 = "3ff2985e71fe18e3bcc57e2f5de7616e";
+const char* uid = "";
+const char* token1 = "";
 //TMD vars
 const char* StationName;
 const char* _Lat;
@@ -202,54 +202,6 @@ void VPD_Function(){
     }
   }
 }
-/*void VPD_Function(){
-  if((vpd_mode == 1) && (outRH < 99.00)){
-    //Fan Function
-    if((inTemp < 24) && (inRH > 82.5)){
-      readCurTrig(24, 82.5);
-      FAN(HIGH);
-      Humidifier(LOW);
-    }else if((inTemp < 27) && (inRH > 85)&& (inTemp > 24)){
-      readCurTrig(27, 85);
-      FAN(HIGH);
-      Humidifier(LOW);
-    }else if((inTemp < 31) && (inRH > 88.5)&& (inTemp > 27)){
-      readCurTrig(31, 87.5);
-      FAN(HIGH);
-      Humidifier(LOW);
-    }else if((inTemp < 35) && (inRH > 91)&& (inTemp > 31)){
-      readCurTrig(35, 90);
-      FAN(HIGH);
-      Humidifier(LOW);
-    }else if((inTemp > 36) && (inRH > 96)&& (inTemp > 35)){
-      readCurTrig(36, 95);
-      FAN(HIGH);
-      Humidifier(LOW);
-    }else{}
-    //Humidifier Function
-    if((inTemp < 24) && (inRH < 82.5)){
-      readCurTrig(24, 82.5);
-      FAN(LOW);
-      Humidifier(HIGH);
-    }else if((inTemp < 27) && (inRH < 85) && (inTemp > 24)){
-      readCurTrig(27, 85);
-      FAN(LOW);
-      Humidifier(HIGH);
-    }else if((inTemp < 31) && (inRH < 88.5)&& (inTemp > 27)){
-      readCurTrig(31, 87.5);
-      FAN(LOW);
-      Humidifier(HIGH);
-    }else if((inTemp < 35) && (inRH < 91)&& (inTemp > 31)){
-      readCurTrig(35, 90);
-      FAN(LOW);
-      Humidifier(HIGH);
-    }else if((inTemp > 36) && (inRH < 96)&& (inTemp > 35)){
-      readCurTrig(36, 95);
-      FAN(LOW);
-      Humidifier(HIGH);
-    }else{}
-  }
-}*/
 void setup() {
   SHT21.begin();
   Serial.begin(115200);
@@ -257,7 +209,7 @@ void setup() {
   pinMode(HDPIN, OUTPUT);
   fanshutter.attach(FANSHUTTER);
   inshutter.attach(INSHUTTER);
-  Blynk.begin(auth, "TERANA", "25322532");
+  Blynk.begin(auth, "", "");
   timer.setInterval(2000, VPD_Function);
   timer.setInterval(1000, readParameters);
   //timer.setInterval(2000, TMD_API);
